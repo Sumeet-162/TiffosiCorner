@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
@@ -22,13 +21,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -41,20 +35,20 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm shadow-sm"
+          ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link 
-          to="/" 
-          className="flex items-center gap-2"
-        >
-          <div className="w-8 h-8 bg-ferrari-red rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-xs">SF</span>
-          </div>
-          <span className="font-bold text-xl">Forza Ferrari</span>
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/public/ferrarilogo.png" 
+            alt="Forza Ferrari Logo"
+            className="w-10 h-10 object-contain rounded-full"
+          />
+            <span className="font-bold text-xl tracking-wide">Forza Ferrari</span>
         </Link>
+
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-6">
@@ -62,8 +56,10 @@ const Navbar = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`nav-link ${
-                location.pathname === link.path ? "nav-link-active" : ""
+              className={`relative font-medium transition-all hover:text-primary ${
+                location.pathname === link.path
+                  ? "text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
+                  : "text-muted-foreground hover:after:w-full after:transition-all after:duration-300 after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-primary"
               }`}
             >
               {link.name}
@@ -72,7 +68,7 @@ const Navbar = () => {
           <ThemeToggle />
         </nav>
 
-        {/* Mobile Navigation Trigger */}
+        {/* Mobile Menu Toggle */}
         <div className="flex lg:hidden items-center space-x-2">
           <ThemeToggle />
           <Button
@@ -81,23 +77,23 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Menu"
           >
-            <Menu className="h-5 w-5" />
+            <Menu className="h-6 w-6" />
           </Button>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t border-border animate-fade-in">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-3">
+        <div className="lg:hidden bg-background shadow-md border-t border-border animate-fade-in">
+          <div className="container mx-auto px-4 py-4 flex flex-col space-y-2">
             {links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-2 py-2 ${
+                className={`block px-3 py-2 rounded-md transition-all font-medium ${
                   location.pathname === link.path
-                    ? "bg-secondary text-primary font-medium rounded"
-                    : ""
+                    ? "bg-secondary text-primary"
+                    : "hover:bg-muted hover:text-primary"
                 }`}
               >
                 {link.name}

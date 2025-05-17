@@ -40,9 +40,9 @@ const Index = () => {
     <>
       {/* Hero Section with enhanced design */}
       <section className="relative bg-gradient-to-b from-ferrari-dark to-black text-white py-32 md:py-40 overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-70">
           <img 
-            src="https://images.unsplash.com/photo-1617886322168-72b886573c35?q=80&w=2000&auto=format&fit=crop" 
+            src="https://cimg0.ibsrv.net/ibimg/hgm/1920x1080-1/100/956/2025-ferrari-sf-25-f1-race-car_100956872.jpg" 
             alt="Ferrari F1 Hero" 
             className="w-full h-full object-cover"
           />
