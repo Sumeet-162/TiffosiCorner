@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -29,12 +28,79 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        ferrari: {
-          red: '#FF2800',
-          yellow: '#FFCC00',
-          dark: '#1E1E1E',
-          light: '#F4F4F4',
+        
+        // Ferrari color system
+        'ferrari-red': {
+          DEFAULT: '#FF2800',
+          50: '#FFF5F2',
+          100: '#FFE0D9',
+          200: '#FFC1B3',
+          300: '#FF9C8D',
+          400: '#FF6B56',
+          500: '#FF3520',
+          600: '#FF2800',
+          700: '#D91F00',
+          800: '#B31A00',
+          900: '#8C1400',
+          950: '#660F00',
         },
+        'ferrari-yellow': {
+          DEFAULT: '#FFCC00',
+          50: '#FFFAEB',
+          100: '#FFF6D6',
+          200: '#FFECAD',
+          300: '#FFE285',
+          400: '#FFD54C',
+          500: '#FFCC00',
+          600: '#D9AD00',
+          700: '#B38E00',
+          800: '#8C6F00',
+          900: '#665000',
+          950: '#403200',
+        },
+        'ferrari-dark': {
+          DEFAULT: '#1A1A1A',
+          50: '#F0F0F0',
+          100: '#E0E0E0',
+          200: '#C2C2C2',
+          300: '#A3A3A3',
+          400: '#858585',
+          500: '#666666',
+          600: '#4D4D4D',
+          700: '#333333',
+          800: '#1A1A1A',
+          900: '#0A0A0A',
+          950: '#050505',
+        },
+        'racing-blue': {
+          DEFAULT: '#005AFF',
+          50: '#E6F0FF',
+          100: '#CCE0FF',
+          200: '#99C2FF',
+          300: '#66A3FF',
+          400: '#3385FF',
+          500: '#0066FF',
+          600: '#005AFF',
+          700: '#0047CC',
+          800: '#003399',
+          900: '#002266',
+          950: '#001133',
+        },
+        'racing-silver': {
+          DEFAULT: '#E0E0E0',
+          50: '#FFFFFF',
+          100: '#FAFAFA',
+          200: '#F5F5F5',
+          300: '#EEEEEE',
+          400: '#E0E0E0',
+          500: '#BDBDBD',
+          600: '#9E9E9E',
+          700: '#757575',
+          800: '#616161',
+          900: '#424242',
+          950: '#212121',
+        },
+        
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -103,6 +169,10 @@ export default {
         "checkered-flag": {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "40px 40px" }
+        },
+        "pulse-engine": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" }
         }
       },
       animation: {
@@ -112,8 +182,31 @@ export default {
         "fade-out": "fade-out 0.5s ease-out",
         "slide-in": "slide-in 0.5s ease-out",
         "checkered-flag": "checkered-flag 2s linear infinite",
-      }
+        "pulse-engine": "pulse-engine 2s ease-in-out infinite"
+      },
+      backgroundImage: {
+        'ferrari-gradient': 'linear-gradient(90deg, #FF2800 0%, #CC0000 100%)',
+        'racing-gradient': 'linear-gradient(45deg, #1A1A1A 0%, #333333 100%)',
+        'checkered-pattern': 'repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 50% / 20px 20px',
+        'carbon-fiber': 'linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1)), linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1))',
+      },
+      boxShadow: {
+        'racing': '0 10px 30px -10px rgba(0, 0, 0, 0.3)',
+        'ferrari': '0 8px 24px -12px rgba(255, 40, 0, 0.5)',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              color: '#FF2800',
+              '&:hover': {
+                color: '#D91F00',
+              },
+            },
+          },
+        },
+      },
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 } satisfies Config;

@@ -1,89 +1,105 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for all browsers but maintain scrolling functionality */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Apply to all elements with scrolling capability */
+.overflow-auto, 
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-scroll,
+.overflow-y-scroll,
+.overflow-x-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.overflow-auto::-webkit-scrollbar, 
+.overflow-y-auto::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar,
+.overflow-scroll::-webkit-scrollbar,
+.overflow-y-scroll::-webkit-scrollbar,
+.overflow-x-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
-
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 10%;
-
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-
-    --primary: 0 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-
-    --accent: 0 83% 50%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 100% 50%;
-
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    --ferrari-red: 0 100% 50%;
+    --ferrari-yellow: 45 100% 50%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 10%;
-    --sidebar-primary: 0 100% 50%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 96%;
-    --sidebar-accent-foreground: 0 0% 10%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 0 100% 60%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 355 100% 44%;
+    --sidebar-primary-foreground: 355 100% 97%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 355 100% 44%;
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+    --card: 0 0% 0%;
+    --card-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 100% 45%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 70%;
-
-    --accent: 0 83% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 72% 40%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 100% 45%;
-
-    --sidebar-background: 0 0% 12%;
+    --sidebar-background: 240 10% 3.9%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 100% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 15%;
+    --sidebar-primary: 355 100% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 0 100% 45%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 355 100% 50%;
   }
 }
 
@@ -93,16 +109,19 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Roboto', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Alata", sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    @apply font-bold;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-4xl md:text-5xl;
   }
 
   h2 {
@@ -116,22 +135,61 @@
   h4 {
     @apply text-xl md:text-2xl;
   }
+  
+  p, span, a, button {
+    font-family: "Alata", sans-serif;
+  }
+  
+  .ferrari-text {
+    font-family: "Cardo", serif;
+  }
+  
+  .ferrari-text-bold {
+    font-family: "Cardo", serif;
+    font-weight: 700;
+  }
+  
+  .ferrari-text-italic {
+    font-family: "Cardo", serif;
+    font-style: italic;
+  }
+  
+  ::selection {
+    @apply bg-ferrari-red/30 text-foreground;
+  }
 }
 
 @layer components {
   .ferrari-gradient {
-    @apply bg-gradient-to-r from-ferrari-red to-red-700;
+    @apply bg-gradient-to-r from-ferrari-red to-red-800;
+  }
+  
+  .ferrari-subtle-gradient {
+    @apply bg-gradient-to-r from-ferrari-red/80 via-red-600/80 to-red-700/80;
   }
   
   .ferrari-text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-ferrari-red to-red-700;
   }
   
+  .racing-gradient {
+    @apply bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 dark:from-ferrari-dark-700 dark:via-ferrari-dark-800 dark:to-ferrari-dark-900;
+  }
+  
   .checkered-pattern {
-    background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
-                      linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%);
+    background-image: linear-gradient(45deg, rgba(34, 34, 34, 0.5) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(34, 34, 34, 0.5) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(34, 34, 34, 0.5) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(34, 34, 34, 0.5) 75%);
     background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
+  }
+  
+  .carbon-fiber-pattern {
+    background-image: 
+      linear-gradient(45deg, rgba(0,0,0,0.2) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.2)), 
+      linear-gradient(45deg, rgba(0,0,0,0.2) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.2));
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
   }
   
   .card-hover {
@@ -139,10 +197,197 @@
   }
 
   .nav-link {
-    @apply relative px-2 py-1 text-foreground hover:text-primary transition-colors before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-0 before:bg-primary before:transition-all before:duration-300 hover:before:w-full;
+    @apply relative px-2 py-1 text-foreground hover:text-ferrari-red transition-colors before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-0 before:bg-ferrari-red before:transition-all before:duration-300 hover:before:w-full;
   }
   
   .nav-link-active {
-    @apply text-primary before:w-full;
+    @apply text-ferrari-red before:w-full;
+  }
+  
+  .ferrari-border {
+    @apply border border-ferrari-red/40 dark:border-ferrari-red/20;
+  }
+  
+  .ferrari-shadow {
+    @apply shadow-md dark:shadow-ferrari;
+  }
+  
+  .animated-bg {
+    @apply relative overflow-hidden;
+  }
+  
+  .animated-bg::after {
+    @apply content-[''] absolute inset-0 -z-10 opacity-10;
+    animation: racing-lights 10s ease-in-out infinite alternate;
+    background: linear-gradient(45deg, transparent 50%, #FF2800 50%, transparent 100%);
+    background-size: 800% 800%;
+  }
+
+  @keyframes racing-lights {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+
+  /* Checkered flag patterns */
+  .checkered-flag {
+    background-image: linear-gradient(45deg, rgba(51, 51, 51, 0.7) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(51, 51, 51, 0.7) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(51, 51, 51, 0.7) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(51, 51, 51, 0.7) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  
+  .checkered-flag-small {
+    background-image: repeating-conic-gradient(rgba(51, 51, 51, 0.7) 0% 25%, rgba(255, 255, 255, 0.7) 0% 50%);
+    background-size: 20px 20px;
+    animation: checkered-flag 6s linear infinite;
+  }
+  
+  .checkered-flag-red {
+    background-image: linear-gradient(45deg, rgba(255, 40, 0, 0.7) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(255, 40, 0, 0.7) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(255, 40, 0, 0.7) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(255, 40, 0, 0.7) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+
+  /* Racing stripes */
+  .racing-stripe-horizontal {
+    background: linear-gradient(to right, transparent 45%, #FF2800 45%, #FF2800 55%, transparent 55%);
+  }
+  
+  .racing-stripe-vertical {
+    background: linear-gradient(to bottom, transparent 45%, #FF2800 45%, #FF2800 55%, transparent 55%);
+  }
+  
+  /* Team color classes */
+  .team-ferrari {
+    background-color: #FF2800;
+  }
+  
+  .team-mercedes {
+    background-color: #00D2BE;
+  }
+  
+  .team-red_bull {
+    background-color: #0600EF;
+  }
+  
+  .team-mclaren {
+    background-color: #FF8700;
+  }
+  
+  .team-aston_martin {
+    background-color: #006F62;
+  }
+  
+  .team-alpine {
+    background-color: #0090FF;
+  }
+  
+  .team-williams {
+    background-color: #005AFF;
+  }
+  
+  .team-alphatauri {
+    background-color: #2B4562;
+  }
+  
+  .team-alfa {
+    background-color: #900000;
+  }
+  
+  .team-haas {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  /* Team accents */
+  .team-color-accent::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+  }
+  
+  .team-color-accent.ferrari::before {
+    background-color: #FF2800;
+  }
+  
+  .team-color-accent.mercedes::before {
+    background-color: #00D2BE;
+  }
+  
+  .team-color-accent.red_bull::before {
+    background-color: #0600EF;
+  }
+  
+  .team-color-accent.mclaren::before {
+    background-color: #FF8700;
+  }
+  
+  .team-color-accent.aston_martin::before {
+    background-color: #006F62;
+  }
+  
+  .team-color-accent.alpine::before {
+    background-color: #0090FF;
+  }
+  
+  .team-color-accent.williams::before {
+    background-color: #005AFF;
+  }
+  
+  .team-color-accent.alphatauri::before {
+    background-color: #2B4562;
+  }
+  
+  .team-color-accent.alfa::before {
+    background-color: #900000;
+  }
+  
+  .team-color-accent.haas::before {
+    background-color: #FFFFFF;
+  }
+  
+  /* Animations */
+  @keyframes checkered-flag {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 40px;
+    }
+  }
+  
+  /* Gradient overlay for images */
+  .image-gradient-overlay {
+    position: relative;
+  }
+  
+  .image-gradient-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
+  }
+  
+  .image-gradient-overlay-side::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
+    pointer-events: none;
   }
 }

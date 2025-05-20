@@ -1,4 +1,3 @@
-
 interface Team {
   id: number;
   name: string;
@@ -8,107 +7,117 @@ interface Team {
   points: number;
   position: number;
   logo: string;
+  founded?: number;
+  baseLocation?: string;
+  teamPrincipal?: string;
+  championships?: number;
+  drivers?: string[];
+  carName?: string;
+  technicalDetails?: {
+    engine: string;
+    chassis: string;
+  };
 }
 
 export const teams: Team[] = [
   {
     id: 1,
-    name: "Red Bull Racing",
-    shortName: "RBR",
-    color: "#0600EF",
-    country: "Austria",
-    points: 273,
     position: 1,
-    logo: "/placeholder.svg"
+    name: "McLaren",
+    shortName: "MCL",
+    country: "United Kingdom",
+    points: 279,
+    color: "#FF8700",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/McLaren_Racing_logo.svg/1280px-McLaren_Racing_logo.svg.png"
   },
   {
     id: 2,
-    name: "Ferrari",
-    shortName: "FER",
-    color: "#FF2800",
-    country: "Italy",
-    points: 246,
     position: 2,
-    logo: "/placeholder.svg"
+    name: "Mercedes AMG Motorsport",
+    shortName: "MER",
+    country: "Germany",
+    points: 147,
+    color: "#00D2BE",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Mercedes_AMG_Petronas_F1_Logo.svg/2560px-Mercedes_AMG_Petronas_F1_Logo.svg.png"
   },
   {
     id: 3,
-    name: "McLaren",
-    shortName: "MCL",
-    color: "#FF8700",
-    country: "United Kingdom",
-    points: 237,
     position: 3,
-    logo: "/placeholder.svg"
+    name: "Red Bull Racing",
+    shortName: "RBR",
+    country: "Austria",
+    points: 131,
+    color: "#0600EF",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Red_Bull_Racing_logo.svg/1920px-Red_Bull_Racing_logo.svg.png"
   },
   {
     id: 4,
-    name: "Mercedes",
-    shortName: "MER",
-    color: "#00D2BE",
-    country: "Germany",
-    points: 180,
     position: 4,
-    logo: "/placeholder.svg"
+    name: "Ferrari",
+    shortName: "FER",
+    country: "Italy",
+    points: 114,
+    color: "#DC0000",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Ferrari-Logo.svg/1920px-Ferrari-Logo.svg.png"
   },
   {
     id: 5,
-    name: "Aston Martin",
-    shortName: "AST",
-    color: "#006F62",
-    country: "United Kingdom",
-    points: 73,
     position: 5,
-    logo: "/placeholder.svg"
+    name: "Williams",
+    shortName: "WIL",
+    country: "United Kingdom",
+    points: 51,
+    color: "#005AFF",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/Williams_Grand_Prix_Engineering_logo.svg/1920px-Williams_Grand_Prix_Engineering_logo.svg.png"
   },
   {
     id: 6,
-    name: "Alpine",
-    shortName: "ALP",
-    color: "#0090FF",
-    country: "France",
-    points: 21,
     position: 6,
-    logo: "/placeholder.svg"
+    name: "Haas F1 Team",
+    shortName: "HAA",
+    country: "United States",
+    points: 20,
+    color: "#FFFFFF",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Haas_F1_Team_logo.svg/1920px-Haas_F1_Team_logo.svg.png"
   },
   {
     id: 7,
-    name: "Haas F1 Team",
-    shortName: "HAA",
-    color: "#FFFFFF",
-    country: "United States",
-    points: 17,
     position: 7,
-    logo: "/placeholder.svg"
+    name: "Aston Martin F1 Team",
+    shortName: "AST",
+    country: "United Kingdom",
+    points: 14,
+    color: "#006F62",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Aston_Martin_F1_Team_logo.svg/2560px-Aston_Martin_F1_Team_logo.svg.png"
   },
   {
     id: 8,
-    name: "Racing Bulls",
-    shortName: "RAB",
-    color: "#00293F",
-    country: "Italy",
-    points: 9,
     position: 8,
-    logo: "/placeholder.svg"
+    name: "Racing Bulls",
+    shortName: "RBU",
+    country: "Italy",
+    points: 10,
+    color: "#1E3D9B",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Visa_Cash_App_Red_Bull_F1_team_logo.svg"
   },
   {
     id: 9,
-    name: "Williams",
-    shortName: "WIL",
-    color: "#005AFF",
-    country: "United Kingdom",
-    points: 1,
     position: 9,
-    logo: "/placeholder.svg"
+    name: "Alpine F1 Team",
+    shortName: "ALP",
+    country: "France",
+    points: 7,
+    color: "#0090FF",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Alpine_F1_Team_Logo.svg/1920px-Alpine_F1_Team_Logo.svg.png"
   },
   {
     id: 10,
+    position: 10,
     name: "Sauber",
     shortName: "SAU",
-    color: "#900000",
     country: "Switzerland",
-    points: 0,
-    position: 10,
-    logo: "/placeholder.svg"
+    points: 6,
+    color: "#900000",
+    logo: "https://upload.wikimedia.org/wikipedia/en/e/e5/Stake_F1_Team_logo.svg"
   }
 ];

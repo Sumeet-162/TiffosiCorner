@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -30,9 +29,38 @@ const RaceCard = ({ id, name, location, country, countryCode, date, results }: R
     year: 'numeric' 
   }).format(raceDate);
 
-  // Generate image URL based on country
+  // Generate image URL based on country code
   const getTrackImage = () => {
-    return `https://images.unsplash.com/photo-1626237123038-ff0c46a4e902?q=80&w=800&auto=format&fit=crop`;
+    // Map country codes to track names used in the repository
+    const countryToTrackMap: Record<string, string> = {
+      'AU': 'Australia_Albert_Park',
+      'BH': 'Bahrain_Bahrain_International',
+      'CN': 'China_Shanghai_International',
+      'NL': 'Netherlands_Zandvoort',
+      'ES': 'Spain_Barcelona_Catalunya',
+      'MC': 'Monaco_Circuit_de_Monaco',
+      'AZ': 'Azerbaijan_Baku',
+      'CA': 'Canada_Gilles_Villeneuve',
+      'FR': 'France_Paul_Ricard',
+      'AT': 'Austria_Red_Bull_Ring',
+      'GB': 'Great_Britain_Silverstone',
+      'HU': 'Hungary_Hungaroring',
+      'BE': 'Belgium_Spa_Francorchamps',
+      'IT': 'Italy_Monza',
+      'SG': 'Singapore_Marina_Bay_Street',
+      'JP': 'Japan_Suzuka',
+      'US': 'USA_Circuit_of_the_Americas',
+      'MX': 'Mexico_Hermanos_Rodriguez',
+      'BR': 'Brazil_Jose_Carlos_Pace',
+      'AE': 'UAE_Abu_Dhabi_Yas_Marina',
+      'SA': 'Saudi_Arabia_Jeddah_Corniche',
+      'QA': 'Qatar_Lusail_International',
+      'PT': 'Portugal_Algarve', // If available
+      'DE': 'Germany_Hockenheimring' // If available
+    };
+    
+    const trackName = countryToTrackMap[countryCode] || 'Australia_Albert_Park';
+    return `https://raw.githubusercontent.com/toUpperCase78/formula1-datasets/refs/heads/master/F1%20Race%20Tracks/${trackName}.png`;
   };
 
   return (

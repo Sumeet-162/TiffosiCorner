@@ -1,109 +1,167 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Button } from "./ui/button";
+import { 
+  Menu as MenuIcon, 
+  X, 
+  Home, 
+  Trophy, 
+  Calendar, 
+  Image as ImageIcon, 
+  FileText, 
+  BookOpen,
+  ExternalLink, 
+  Flag, 
+  Car, 
+  Clock
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "../lib/utils";
+import { Badge } from "./ui/badge";
 
-const Navbar = () => {
+const links = [
+  { name: "Home", path: "/", icon: Home },
+  { name: "Race Calendar", path: "/races", icon: Calendar },
+  { name: "Standings", path: "/standings", icon: Trophy },
+  { name: "Gallery", path: "/gallery", icon: ImageIcon },
+  { name: "News", path: "/news", icon: FileText },
+  { name: "History", path: "/history", icon: BookOpen },
+  { name: "About", path: "/about", icon: Flag }
+];
+
+// Team colors mapping for navigation
+const teamColors = {
+  "ferrari": "#FF2800",
+  "mercedes": "#00D2BE",
+  "red_bull": "#0600EF",
+  "mclaren": "#FF8700",
+  "aston_martin": "#006F62",
+  "alpine": "#0090FF",
+  "williams": "#005AFF",
+  "alphatauri": "#2B4562",
+  "alfa": "#900000",
+  "haas": "#FFFFFF"
+};
+
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "Race Stories", path: "/races" },
-    { name: "Standings", path: "/standings" },
-    { name: "History", path: "/history" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "News", path: "/news" },
-    { name: "About", path: "/about" }
-  ];
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
-
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src="/public/ferrarilogo.png" 
-            alt="Forza Ferrari Logo"
-            className="w-10 h-10 object-contain rounded-full"
-          />
-            <span className="font-bold text-xl tracking-wide">Forza Ferrari</span>
-        </Link>
-
-
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-6">
-          {links.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`relative font-medium transition-all hover:text-primary ${
-                location.pathname === link.path
-                  ? "text-primary after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
-                  : "text-muted-foreground hover:after:w-full after:transition-all after:duration-300 after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-primary"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <ThemeToggle />
-        </nav>
-
-        {/* Mobile Menu Toggle */}
-        <div className="flex lg:hidden items-center space-x-2">
-          <ThemeToggle />
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Menu"
+    <header className={cn(
+      "fixed top-0 w-full z-50 transition-all duration-300",
+      isScrolled ? "bg-black/80 backdrop-blur border-b" : "bg-black/60 backdrop-blur"
+    )}>
+      <div className="w-full px-0">
+        <div className="flex items-center justify-between h-16 px-4">
+          <Link 
+            to="/" 
+            className="flex items-center gap-1.5"
           >
-            <Menu className="h-6 w-6" />
-          </Button>
+            <img
+              src="https://raw.githubusercontent.com/Sumeet-162/F1Ferrari/refs/heads/main/public/ferrarilogo.png"
+              alt="Ferrari Logo"
+              className="w-7 h-7 object-contain"
+            />
+            <div className="flex flex-col">
+              <span className="ferrari-text-bold text-lg tracking-wide font-racing font-bold">
+                Tifosi Corner
+              </span>
+              <span className="ferrari-text-italic text-[10px] text-muted-foreground -mt-1 tracking-wide">
+                Passione per la velocità
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-1">
+            {links.map((link) => (
+              <Button
+                key={link.path}
+                asChild
+                variant="ghost"
+                size="sm"
+                className={cn(
+                  "px-2",
+                  location.pathname === link.path
+                    ? "bg-ferrari-red/10 text-ferrari-red hover:bg-ferrari-red/15"
+                    : ""
+                )}
+              >
+                <Link to={link.path}>
+                  <link.icon className="h-4 w-4 mr-1.5" />
+                  <span>{link.name}</span>
+                </Link>
+              </Button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              onClick={toggleMenu}
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background shadow-md border-t border-border animate-fade-in">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-2">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`block px-3 py-2 rounded-md transition-all font-medium ${
-                  location.pathname === link.path
-                    ? "bg-secondary text-primary"
-                    : "hover:bg-muted hover:text-primary"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-background/95 backdrop-blur-lg border-b overflow-hidden"
+          >
+            <div className="flex flex-col space-y-1 px-4 py-4">
+              {links.map((link) => (
+                <Button
+                  key={link.path}
+                  asChild
+                  variant={location.pathname === link.path ? "secondary" : "ghost"}
+                  size="sm"
+                  onClick={() => setIsOpen(false)}
+                  className="justify-start px-3"
+                >
+                  <Link to={link.path} className="w-full flex items-center gap-3">
+                    <link.icon className="h-4 w-4" />
+                    <span>{link.name}</span>
+                    {location.pathname === link.path && (
+                      <Badge className="ml-auto bg-ferrari-red text-white text-[10px] h-5">Active</Badge>
+                    )}
+                  </Link>
+                </Button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
-};
-
-export default Navbar;
+}
