@@ -129,10 +129,10 @@ export default function Home() {
             lastName="Leclerc"
             number="16"
             nationality="Monegasque"
-            position="2"
-            points="143"
-            wins="3"
-            podiums="6"
+            position="5"
+            points="119"
+            wins="0"
+            podiums="3"
             imageUrl="https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/leclerc.jpg.img.1024.medium.jpg"
           />
           <FerrariDriverCard 
@@ -141,7 +141,7 @@ export default function Home() {
             number="44"
             nationality="British"
             position="6"
-            points="53"
+            points="103"
             wins="0"
             podiums="1"
             imageUrl="https://media.formula1.com/content/dam/fom-website/drivers/2025Drivers/hamilton.jpg.img.1024.medium.jpg"
