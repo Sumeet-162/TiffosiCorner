@@ -29,7 +29,7 @@ const About = () => {
         subtitle="Passion for Ferrari Excellence"
         badgeText="FORZA FERRARI"
         badgeIcon={<Flag className="h-4 w-4" />}
-        imageUrl="https://raw.githubusercontent.com/Sumeet-162/f1Images/refs/heads/main/about1.jpg"
+        imageUrl="https://wojciechstaszewski4.github.io/FerrariWebsite/ferrari.png"
         metaItems={[
           { icon: <Trophy className="h-4 w-4" />, text: "Celebrating Ferrari racing excellence" },
           { icon: <Heart className="h-4 w-4" />, text: "Created with passion for the Prancing Horse" }
@@ -131,7 +131,7 @@ const About = () => {
                   <div className="h-full w-full overflow-hidden rounded-2xl">
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
                     <img 
-                      src="https://raw.githubusercontent.com/Sumeet-162/F1Ferrari/refs/heads/main/public/ferrarilogo.png" 
+                      src="https://wojciechstaszewski4.github.io/FerrariWebsite/ferrari.png" 
                       alt="Ferrari Logo" 
                       className=" object-contain bg-black/90"
                     />

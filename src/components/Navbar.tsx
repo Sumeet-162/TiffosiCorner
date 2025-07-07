@@ -55,7 +55,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 50) {
+      if (scrollPosition > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -68,25 +68,35 @@ export function Navbar() {
 
   return (
     <header className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
-      isScrolled ? "bg-black/80 backdrop-blur border-b" : "bg-black/60 backdrop-blur"
+      "fixed top-0 w-full z-50 transition-all duration-500 ease-out",
+      isScrolled 
+        ? "bg-black/70 backdrop-blur-xl border-b border-white/10" 
+        : "bg-black/40 backdrop-blur-md"
     )}>
-      <div className="w-full px-0">
-        <div className="flex items-center justify-between h-16 px-4">
+      <div className="w-full px-4 py-2">
+        <div className={cn(
+          "flex items-center justify-between h-14 px-4 rounded-2xl transition-all duration-300",
+          isScrolled 
+            ? "bg-white/5 border border-white/10 shadow-2xl shadow-black/20" 
+            : "bg-white/3 border border-white/5"
+        )}>
           <Link 
             to="/" 
-            className="flex items-center gap-1.5"
+            className="flex items-center gap-2 group"
           >
-            <img
-              src="https://raw.githubusercontent.com/Sumeet-162/F1Ferrari/refs/heads/main/public/ferrarilogo.png"
-              alt="Ferrari Logo"
-              className="w-7 h-7 object-contain"
-            />
+            <div className="relative">
+              <img
+                src="https://wojciechstaszewski4.github.io/FerrariWebsite/ferrari.png"
+                alt="Ferrari Logo"
+                className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-ferrari-red/20 rounded-full blur-sm group-hover:bg-ferrari-red/30 transition-all duration-300"></div>
+            </div>
             <div className="flex flex-col">
-              <span className="ferrari-text-bold text-lg tracking-wide font-racing font-bold">
+              <span className="ferrari-text-bold text-lg tracking-wide font-racing font-bold text-white group-hover:text-ferrari-red transition-colors duration-300">
                 Tifosi Corner
               </span>
-              <span className="ferrari-text-italic text-[10px] text-muted-foreground -mt-1 tracking-wide">
+              <span className="ferrari-text-italic text-[10px] text-white/60 -mt-1 tracking-wide group-hover:text-white/80 transition-colors duration-300">
                 Passione per la velocità
               </span>
             </div>
@@ -101,15 +111,18 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 className={cn(
-                  "px-2",
+                  "px-3 py-2 rounded-xl transition-all duration-300 hover:bg-white/10 hover:scale-105",
                   location.pathname === link.path
-                    ? "bg-ferrari-red/10 text-ferrari-red hover:bg-ferrari-red/15"
-                    : ""
+                    ? "bg-ferrari-red/20 text-ferrari-red border border-ferrari-red/30 shadow-lg shadow-ferrari-red/20"
+                    : "text-white/80 hover:text-white"
                 )}
               >
-                <Link to={link.path}>
-                  <link.icon className="h-4 w-4 mr-1.5" />
-                  <span>{link.name}</span>
+                <Link to={link.path} className="flex items-center gap-2">
+                  <link.icon className={cn(
+                    "h-4 w-4 transition-all duration-300",
+                    location.pathname === link.path ? "text-ferrari-red" : "text-white/70"
+                  )} />
+                  <span className="font-medium">{link.name}</span>
                 </Link>
               </Button>
             ))}
@@ -119,11 +132,11 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden rounded-xl hover:bg-white/10 transition-all duration-300"
               onClick={toggleMenu}
               aria-label="Toggle Menu"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+              {isOpen ? <X className="h-5 w-5 text-white" /> : <MenuIcon className="h-5 w-5 text-white" />}
             </Button>
           </div>
         </div>
@@ -133,30 +146,46 @@ export function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-background/95 backdrop-blur-lg border-b overflow-hidden"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="md:hidden mx-4 mb-4 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/20 overflow-hidden"
           >
-            <div className="flex flex-col space-y-1 px-4 py-4">
-              {links.map((link) => (
-                <Button
+            <div className="flex flex-col space-y-1 p-4">
+              {links.map((link, index) => (
+                <motion.div
                   key={link.path}
-                  asChild
-                  variant={location.pathname === link.path ? "secondary" : "ghost"}
-                  size="sm"
-                  onClick={() => setIsOpen(false)}
-                  className="justify-start px-3"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  <Link to={link.path} className="w-full flex items-center gap-3">
-                    <link.icon className="h-4 w-4" />
-                    <span>{link.name}</span>
-                    {location.pathname === link.path && (
-                      <Badge className="ml-auto bg-ferrari-red text-white text-[10px] h-5">Active</Badge>
+                  <Button
+                    asChild
+                    variant={location.pathname === link.path ? "secondary" : "ghost"}
+                    size="sm"
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "justify-start px-4 py-3 rounded-xl w-full transition-all duration-300 hover:scale-[1.02]",
+                      location.pathname === link.path 
+                        ? "bg-ferrari-red/20 text-ferrari-red border border-ferrari-red/30" 
+                        : "hover:bg-white/10 text-white/80 hover:text-white"
                     )}
-                  </Link>
-                </Button>
+                  >
+                    <Link to={link.path} className="w-full flex items-center gap-3">
+                      <link.icon className={cn(
+                        "h-4 w-4 transition-colors duration-300",
+                        location.pathname === link.path ? "text-ferrari-red" : "text-white/70"
+                      )} />
+                      <span className="font-medium">{link.name}</span>
+                      {location.pathname === link.path && (
+                        <Badge className="ml-auto bg-ferrari-red text-white text-[10px] h-5 rounded-full border-0">
+                          Active
+                        </Badge>
+                      )}
+                    </Link>
+                  </Button>
+                </motion.div>
               ))}
             </div>
           </motion.div>

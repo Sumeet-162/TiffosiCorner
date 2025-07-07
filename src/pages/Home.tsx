@@ -196,7 +196,7 @@ export default function Home() {
                     </CardDescription>
                   </div>
                   <motion.img 
-                    src="https://raw.githubusercontent.com/Sumeet-162/F1Ferrari/refs/heads/main/public/ferrarilogo.png" 
+                    src="https://wojciechstaszewski4.github.io/FerrariWebsite/ferrari.png" 
                     alt="Ferrari Logo"
                     className="w-20 h-20 object-contain"
                     whileHover={{ scale: 1.05 }}
@@ -263,4 +263,4 @@ export default function Home() {
       </section>
     </div>
   );
-} 
+}

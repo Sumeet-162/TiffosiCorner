@@ -18,7 +18,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <img
-                src="https://raw.githubusercontent.com/Sumeet-162/F1Ferrari/refs/heads/main/public/ferrarilogo.png"
+                src="https://wojciechstaszewski4.github.io/FerrariWebsite/ferrari.png"
                 alt="Ferrari Logo"
                 className="w-12 h-12 object-contain"
               />

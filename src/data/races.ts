@@ -279,7 +279,7 @@ export const races: Race[] = [
       }
     },
     laps: 78,
-    status: "Upcoming",
+    status: "Completed",
     FirstPractice: {
       date: "2025-05-23T10:30:00Z",
       time: "04:00 PM IST"
@@ -304,7 +304,7 @@ export const races: Race[] = [
       }
     },
     laps: 66,
-    status: "Upcoming",
+    status: "Completed",
     FirstPractice: {
       date: "2025-05-30T10:30:00Z",
       time: "04:00 PM IST"
@@ -329,7 +329,7 @@ export const races: Race[] = [
       }
     },
     laps: 70,
-    status: "Upcoming",
+    status: "Completed",
     FirstPractice: {
       date: "2025-06-13T16:30:00Z",
       time: "10:00 PM IST"
@@ -354,7 +354,7 @@ export const races: Race[] = [
       }
     },
     laps: 71,
-    status: "Upcoming",
+    status: "Completed",
     FirstPractice: {
       date: "2025-06-27T10:30:00Z",
       time: "04:00 PM IST"
@@ -379,7 +379,7 @@ export const races: Race[] = [
       }
     },
     laps: 52,
-    status: "Upcoming",
+    status: "Completed",
     FirstPractice: {
       date: "2025-07-04T11:30:00Z",
       time: "05:00 PM IST"
